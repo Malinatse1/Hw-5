@@ -25,12 +25,13 @@ public class RegistrationPage {
 
             subjectContainer =$x(".//*[@id='subjectsContainer']"),
             subjectInput = $("#subjectsInput"),
-            hobbiesInput = $x("//label[text()='Sports']"),
+            hobbiesInput = $("#hobbiesWrapper"),
             uploadFileBtn = $x("//input[@id='uploadPicture']"),
             currentAdressInput= $("#currentAddress"),
             stateCityWrapper= $("#stateCity-wrapper"),
             stateDropdown= $("#state"),
             cityDropdown= $("#city"),
+            submitBtn=   $("#submit"),
 
 
 
@@ -104,7 +105,7 @@ public class RegistrationPage {
         return this;
     }
     public RegistrationPage setHobbies(String value) {
-        hobbiesInput.click();
+        hobbiesInput.$(new ByText(value)).click();
 
         return this;
     }
@@ -130,6 +131,10 @@ public class RegistrationPage {
        cityDropdown.click();
        cityDropdown.$(new ByText(value)).click();
 
+        return this;
+    }
+    public RegistrationPage setSubmit() {
+        submitBtn.click();
         return this;
     }
 }

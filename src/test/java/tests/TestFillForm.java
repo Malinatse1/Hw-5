@@ -31,10 +31,11 @@ public class TestFillForm extends TestBase {
         String birthYear = "1992";
         String subject = "English";
         String hobbies = "Sports";
-        String uploadFile = "C:\\QA GURU\\demoga-\\src\\test\\resources\\Screenshot_188.png";
+        String uploadFile = "src/test/resources/Screenshot_188.png";
         String currentAdress = "Moscow,Lenina 152";
         String state = "NCR";
         String city = "Delhi";
+        String pictureName = "Screenshot_188.png";
 
         //Open page
         registrationPage.openPage()
@@ -61,16 +62,22 @@ public class TestFillForm extends TestBase {
         // Add State
          .setState(state)
         // Add City
-         .setCity(city);
+         .setCity(city)
         // Click on Submit
-        $("#submit").click();
+        .setSubmit();
         // Check
         registrationPage.verifyResultsModalAppears()
-                .verifyResult("Student Name", userName + " Bochkova")
-                .verifyResult("Student Email", " Nataly@natal.com")
-                .verifyResult("Gender", " Female")
-                .verifyResult("Mobile", "7999999999")
-                .verifyResult("Date of Birth", " 23 June,1992");
+                .verifyResult("Student Name", userName + " " + lastName)
+                .verifyResult("Student Email", email)
+                .verifyResult("Gender", gender)
+                .verifyResult("Mobile", phone)
+                .verifyResult("Date of Birth", birthDay)
+                .verifyResult("Subjects", subject)
+                .verifyResult("Hobbies", hobbies)
+                .verifyResult("Picture", pictureName)
+                .verifyResult("Address", currentAdress)
+                .verifyResult("State and City", state + " " + city);
+
 
     }
 }
